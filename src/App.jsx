@@ -69,3 +69,55 @@
 // useState -> us a hook that allows you to have state variables in functional components
 // mouse ko sune listner
 // jo sune hue ko follow kre eventHandler
+
+////////////////////////////////////////////
+// import React from "react";
+
+// function App() {
+//   const eventHandler = (e) => {
+//     e.preventDefault();
+//     console.log("Hulala")
+//     console.log(e);
+//   };
+//   return (
+//     <div>
+
+//       <button onClick={eventHandler}>click</button>
+//     </div>
+//   );
+// }
+
+// export default App;
+
+///////////////////////////////////
+
+import React, { useState } from "react";
+
+function App() {
+  const [username, setUsername] = useState("");
+  const [names, setNames] = useState([]);
+  const eventHandler = (e) => {
+    e.preventDefault();
+    console.log(username);
+    // setUsername("");
+    const copyNames = [...names];
+    copyNames.push(username);
+    setNames(copyNames);
+    setUsername("");
+  };
+  return (
+    <div>
+      <form action="" onSubmit={eventHandler}>
+        <input
+          onChange={(e) => setUsername(e.target.value)}
+          value={username}
+          type="text"
+          placeholder="name"
+        />
+        <button>submit</button>
+      </form>
+    </div>
+  );
+}
+
+export default App;
